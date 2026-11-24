@@ -14,6 +14,12 @@ timeZone = 'Asia/Shanghai'
 
 theme = 'PaperMod'
 
+# 生产模式：启用 SEO/OpenGraph/资源指纹/图片优化
+env = 'production'
+
+# 文章默认分组（首页列表、上一篇/下一篇均取此 section）
+mainSections = ['posts']
+
 # 文章默认分组
 [taxonomies]
   tag = 'tags'
@@ -24,15 +30,49 @@ theme = 'PaperMod'
   [caches.images]
     dir = ':cacheDir/images'
 
+# 首页输出格式：HTML + RSS + JSON（JSON 供站内搜索索引）
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']
+
 [params]
   description = '记录游戏客户端开发学习与工程复盘'
   author = '网内人'
-  # 首页信息模式（关闭 profile 头像区，走文章列表）
+  keywords = ['Unity', 'C#', '游戏客户端', 'Hugo', '技术博客', '工程复盘']
+
+  # 首页信息模式（关闭 profile 头像区，走“介绍块 + 文章列表”）
   profileMode.enabled = false
+
+  # 主题：跟随系统（auto），保留右上角明暗切换按钮
+  defaultTheme = 'auto'
+
+  # 日期显示格式（Go 参考时间：2006-01-02）
+  DateFormat = '2006-01-02'
+
+  # 文章元信息与阅读辅助
+  ShowReadingTime = true
+  ShowWordCount = true
+  ShowBreadCrumbs = true
+  ShowPostNavLinks = true
+  ShowCodeCopyButtons = true
+  # 暂不开启社交分享按钮
+  ShowShareButtons = false
+
   # 文章目录
   ShowToc = true
   # 自动折叠目录
   TocOpen = false
+
+# 首页介绍块（显示在文章列表上方）
+[params.homeInfoParams]
+  Title = '网内人'
+  Content = '记录游戏客户端开发学习与工程复盘，内容以 **Unity**、C# 与工程实践为主。'
+  AlignSocialIconsTo = 'left'
+
+# 首页社交图标（name 需匹配主题内置图标；github 已确认存在）
+[[params.socialIcons]]
+  name = 'github'
+  url = 'https://github.com/blackice1024'
+  title = 'GitHub'
 
 [menus]
   [[menus.main]]
@@ -55,3 +95,8 @@ theme = 'PaperMod'
     name = '标签'
     url = '/tags/'
     weight = 4
+  [[menus.main]]
+    identifier = 'search'
+    name = '搜索'
+    url = '/search/'
+    weight = 5
