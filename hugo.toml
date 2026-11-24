@@ -30,6 +30,12 @@ mainSections = ['posts']
   [caches.images]
     dir = ':cacheDir/images'
 
+# 允许 Markdown 内的原始 HTML（details/summary 折叠答案等）
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
 # 首页输出格式：HTML + RSS + JSON（JSON 供站内搜索索引）
 [outputs]
   home = ['HTML', 'RSS', 'JSON']
